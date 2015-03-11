@@ -14,6 +14,7 @@
 
 import serial
 import Servo
+import time
 
 #-- Change the serial port here
 SERIAL_PORT = "/dev/ttyUSB0"
@@ -31,6 +32,10 @@ def serial_port(sname = "/dev/ttyUSB0"):
 
 #-- Open serial port
 sp = serial_port(SERIAL_PORT)
+
+#-- When the serial port is open, the board is reset
+#-- It takes around 2 sec for the board to be ready
+time.sleep(2)
 
 #-- Define the servos
 a = Servo.Servo(sp, dir = 'a')

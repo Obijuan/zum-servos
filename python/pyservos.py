@@ -17,6 +17,11 @@ SERIAL_PORT = "/dev/ttyUSB0"
 
 #-- short version (not interactive)
 with serial.Serial(SERIAL_PORT, 19200) as sp:
+
+    #-- When the serial port is open, the board is reset
+    #-- It takes around 2 sec for the board to be ready
+    time.sleep(2)
+
     a = Servo.Servo(sp, dir = 'a')
     b = Servo.Servo(sp, dir = 'b')
     
@@ -31,7 +36,7 @@ with serial.Serial(SERIAL_PORT, 19200) as sp:
     time.sleep(1)
     
     #-- Simple sequence
-    for i in range(10):
+    for i in range(20):
       a.pos = -a.pos
       b.pos = -b.pos
       time.sleep(1)
