@@ -49,7 +49,7 @@ class Servo(object):
     frame = self.dir + str(pos) + "\r"
     
     #-- Debug
-    print (frame)
+    #print (frame)
     
     #-- Send the frame
     self.sp.write(frame)
